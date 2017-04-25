@@ -1,6 +1,7 @@
 var canvas = document.getElementById('Canvas');
 var context = canvas.getContext("2d");
 var mapSpriteAtual = "";
+var tempMarker;
 //criando os mapsprites do jogo
 
 var Mapas = new Array();
@@ -9,8 +10,8 @@ var Mapas = new Array();
 var Marker = function () {
     this.Sprite = new Image();
     this.Sprite.src = "images/tumulo.png";
-    this.Width = 20;
-    this.Height = 20;
+    this.Width = 30;
+    this.Height = 30;
     this.XPos = 0;
     this.YPos = 0;
 	this.Map = mapSpriteAtual.id;
@@ -181,7 +182,7 @@ mapSprite.tempo= 480;
 Mapas.push(mapSprite);
 
 var mapSprite = new Image();
-mapSprite.id = "DRA01";
+mapSprite.id = "DRAC01";
 mapSprite.src = "images/gef_dun01.png";
 mapSprite.name= "Drácula | Calabouço de Geffen (2)"
 mapSprite.tempo= 60;
@@ -534,6 +535,17 @@ for (var i = 0; i< Mapas.length; i++){
 	mapSpriteAtual = Mapas[i];
 	}
 }
+$('#popup').hide();
+$('#horas').val("");
+$('#minutos').val("");
+
+for (var i = 0; i < Markers.length; i++) {
+    if (Markers[i].idMarker == mapSpriteAtual.id){
+        $('#horas').val(Markers[i].horas);
+        $('#minutos').val(Markers[i].minutos);
+    }
+    }
+
 }
 
 //function responsável por carregar os MVPs e seus mapas em uma dropdown list
@@ -562,12 +574,17 @@ var mouseClicked = function (mouse) {
     var marker = new Marker();
     marker.XPos = mouseXPos - (marker.Width / 2);
     marker.YPos = mouseYPos - marker.Height;
-
+    marker.XTooltip = mouse.x;
+    marker.YTooltip = mouse.y;
+    marker.idMarker = mapSpriteAtual.id;
+    marker.horas = 0;
+    marker.minutos = 0;
 	//torna os marcadores já existentes no vetor de marcadores como não-atuais
 	for (var i = 0; i < Markers.length; i++) {
-	Markers[i].Atual = false;
+	if (Markers[i].idMarker == marker.idMarker){
+    Markers[i] = marker;
+    }
 	}
-	
 	//adiciona o marcador atual para o array de marcadores
     Markers.push(marker);
 }
@@ -599,30 +616,57 @@ var draw = function () {
     // Draw map
     // Sprite, X location, Y location, Image width, Image height
     // You can leave the image height and width off, if you do it will draw the image at default size
-    context.drawImage(mapSpriteAtual, 0, 0, 300, 300);
+    context.drawImage(mapSpriteAtual, 0, 0, 500, 500);
 
     // Adicionar o marcador atual
     for (var i = 0; i < Markers.length; i++) {
-		if (Markers[i].Atual == true){
+		if (Markers[i].idMarker == mapSpriteAtual.id){
         var tempMarker = Markers[i];
         // Draw marker
-        context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos, tempMarker.Width, tempMarker.Height);
+        context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos + 10, tempMarker.Width, tempMarker.Height);
 
         // Calculate position text
         var markerText = "Coordenadas (" + tempMarker.XPos + ", " + Math.round(tempMarker.YPos) +")";
 
         // Draw a simple box so you can see the position
-        var textMeasurements = context.measureText(markerText);
-        context.fillStyle = "#666";
-        context.globalAlpha = 0.7;
-        context.fillRect(tempMarker.XPos - (textMeasurements.width / 2), tempMarker.YPos - 15, textMeasurements.width, 20);
-        context.globalAlpha = 1;
+        //var textMeasurements = context.measureText(markerText);
+        //context.fillStyle = "#fff";
+        //context.globalAlpha = 0.7;
+        //context.fillRect(tempMarker.XPos - (textMeasurements.width / 2), tempMarker.YPos - 15, textMeasurements.width, 20);
+        //context.globalAlpha = 1;
 
         // Draw position above
-        context.fillStyle = "#000";
-        context.fillText(markerText, Math.floor(tempMarker.XPos), Math.round(tempMarker.YPos));
+        //context.fillStyle = "#000";
+        //context.fillText(markerText, Math.floor(tempMarker.XPos), Math.round(tempMarker.YPos));
+        $('#popup').show("slow");
+        $('#popup').css('top', tempMarker.YTooltip+10+"px");
+        $('#popup').css('left', tempMarker.XTooltip+10+"px");
+        tempMarker.minutos = $('#minutos').val();
+        tempMarker.horas = $('#horas').val();
 		}
 	}
 };
+
+var gravar = function (){
+    tempMarker = mapSpriteAtual;
+    tempMarker.minutos = $('#minutos').val();
+    tempMarker.horas = $('#horas').val();
+    /*var cookie = [tempMarker.id, '=', JSON.stringify(tempMarker.idMarker), ';horas=', JSON.stringify(tempMarker.horas), '; domain=.', window.location.host.toString(), '; path=/;'].join('');
+    document.cookie = cookie;
+    */
+    $.cookie(mapSpriteAtual.id, tempMarker.minutos, tempMarker.horas, { expires : 10 } );
+    ler();
+}
+
+var ler = function(){
+ var name = mapSpriteAtual.id;
+ /*var result = document.cookie.match(new RegExp(name + '=([^;]+)'));
+ result && (result = JSON.parse(result[1]));
+ alert(result);
+ return result;*/
+
+ var cookieValue = $.cookie(name);
+ alert(cookieValue);
+}
 
 setInterval(main, (1000 / 60)); // Refresh 60 times a second

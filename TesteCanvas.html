@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="estilo.css">
+<script src="jquery.min.js" charset="utf-8"></script>
+<script src="jquery.cookie.js" charset="utf-8"></script>
 <div id="mapa">
 <form id="listaMVP">
   <select id="selectMVP" onchange="atualizarMap(this.value)">
@@ -8,7 +10,19 @@
   </select>
 </form>
 <br/>
-<canvas id="Canvas" width="300" height="300"></canvas>
+<canvas id="Canvas" width="500" height="500"></canvas>
 <script src="marcador.js" charset="utf-8"></script>
 
 </div>
+
+
+<div id="popup">
+<div id="content">
+<h3>Túmulo</h3>
+<p>Hora da Morte</p>
+<input type="number" id="horas" class="tempo" min="0" max="23"/>  :  <input type="number" id="minutos" class="tempo" min="0" max="59"/><br/>
+<p>Coordenadas (opcional)</p>
+<input type="text" id="where" placeholder="Ex: 150, 86"/> <br/><br/>
+<input type="Button" value="Salvar" onclick="gravar()"/> 
+</div>   
+</div>​

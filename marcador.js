@@ -651,21 +651,12 @@ var gravar = function (){
     tempMarker.map = mapSpriteAtual;
     tempMarker.minutos = $('#minutos').val();
     tempMarker.horas = $('#horas').val();
-    /*var cookie = [tempMarker.id, '=', JSON.stringify(tempMarker.idMarker), ';horas=', JSON.stringify(tempMarker.horas), '; domain=.', window.location.host.toString(), '; path=/;'].join('');
-    document.cookie = cookie;
-    */
-    //$.cookie(mapSpriteAtual.id, tempMarker.minutos, tempMarker.horas, { expires : 10 } );
-	
 	setCookie(mapSpriteAtual.id, tempMarker.horas+"."+tempMarker.minutos+"."+tempMarker.XPos+"."+tempMarker.YPos+"."+$('#where').val(), 7);
     ler();
 }
 
 var ler = function(){
  var name = mapSpriteAtual.id;
- /*var result = document.cookie.match(new RegExp(name + '=([^;]+)'));
- result && (result = JSON.parse(result[1]));
- alert(result);
- return result;*/
  var result = getCookie(name);
  alert(result);
  alert('test');

@@ -648,7 +648,9 @@ var draw = function () {
 };
 
 var gravar = function (){
-    tempMarker.map = mapSpriteAtual;
+
+
+
     tempMarker.minutos = $('#minutos').val();
     tempMarker.horas = $('#horas').val();
 	setCookie(mapSpriteAtual.id, tempMarker.horas+"."+tempMarker.minutos+"."+tempMarker.XPos+"."+tempMarker.YPos+"."+$('#where').val(), 7);

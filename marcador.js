@@ -16,6 +16,9 @@ var Marker = function () {
     this.YPos = 0;
 	this.Map = mapSpriteAtual.id;
 	this.Atual = true;
+	this.horas = "";
+	this.minutos = "";
+	this.where = "";
 }
 
 var carregar = function ()
@@ -539,10 +542,23 @@ $('#popup').hide();
 $('#horas').val("");
 $('#minutos').val("");
 
+
+
 for (var i = 0; i < Markers.length; i++) {
     if (Markers[i].idMarker == mapSpriteAtual.id){
+		var name = mapSpriteAtual.id;
+		var result = getCookie(name);
+		if (result){
+		var res = result.split("☼");
+		Markers[i].XPos = res[2];
+		Markers[i].YPost = res[3];
+		Markers[i].minutos = res[1];
+		Markers[i].horas = res[0];
+		Markers[i].where = res[4];
+		}
         $('#horas').val(Markers[i].horas);
         $('#minutos').val(Markers[i].minutos);
+		$('#where').val(Markers[i].where);
     }
     }
 
@@ -585,8 +601,6 @@ var mouseClicked = function (mouse) {
     Markers[i] = marker;
     }
 	}
-	//adiciona o marcador atual para o array de marcadores
-    Markers.push(marker);
 }
 
 // Add mouse click event listener to canvas
@@ -626,18 +640,19 @@ var draw = function () {
         context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos + 10, tempMarker.Width, tempMarker.Height);
 
         // Calculate position text
-        var markerText = "Coordenadas (" + tempMarker.XPos + ", " + Math.round(tempMarker.YPos) +")";
+        /*  var markerText = "Coordenadas (" + tempMarker.XPos + ", " + Math.round(tempMarker.YPos) +")";
 
         // Draw a simple box so you can see the position
-        //var textMeasurements = context.measureText(markerText);
-        //context.fillStyle = "#fff";
-        //context.globalAlpha = 0.7;
-        //context.fillRect(tempMarker.XPos - (textMeasurements.width / 2), tempMarker.YPos - 15, textMeasurements.width, 20);
-        //context.globalAlpha = 1;
+       var textMeasurements = context.measureText(markerText);
+        context.fillStyle = "#fff";
+        context.globalAlpha = 0.7;
+        context.fillRect(tempMarker.XPos - (textMeasurements.width / 2), tempMarker.YPos - 15, textMeasurements.width, 20);
+        context.globalAlpha = 1;
 
-        // Draw position above
-        //context.fillStyle = "#000";
-        //context.fillText(markerText, Math.floor(tempMarker.XPos), Math.round(tempMarker.YPos));
+         Draw position above
+        context.fillStyle = "#000";
+        context.fillText(markerText, Math.floor(tempMarker.XPos), Math.round(tempMarker.YPos)); */
+		
         $('#popup').show("slow");
         $('#popup').css('top', tempMarker.YTooltip+10+"px");
         $('#popup').css('left', tempMarker.XTooltip+10+"px");
@@ -649,11 +664,9 @@ var draw = function () {
 
 var gravar = function (){
 
-
-
     tempMarker.minutos = $('#minutos').val();
     tempMarker.horas = $('#horas').val();
-	setCookie(mapSpriteAtual.id, tempMarker.horas+"."+tempMarker.minutos+"."+tempMarker.XPos+"."+tempMarker.YPos+"."+$('#where').val(), 7);
+	setCookie(mapSpriteAtual.id, tempMarker.horas+"☼"+tempMarker.minutos+"☼"+tempMarker.XPos+"☼"+tempMarker.YPos+"☼"+$('#where').val(), 7);
     ler();
 }
 

@@ -654,7 +654,9 @@ var gravar = function (){
     /*var cookie = [tempMarker.id, '=', JSON.stringify(tempMarker.idMarker), ';horas=', JSON.stringify(tempMarker.horas), '; domain=.', window.location.host.toString(), '; path=/;'].join('');
     document.cookie = cookie;
     */
-    $.cookie(mapSpriteAtual.id, tempMarker.minutos, tempMarker.horas, { expires : 10 } );
+    //$.cookie(mapSpriteAtual.id, tempMarker.minutos, tempMarker.horas, { expires : 10 } );
+	
+	setCookie(mapSpriteAtual.id, tempMarker.minutos, 7);
     ler();
 }
 
@@ -664,9 +666,32 @@ var ler = function(){
  result && (result = JSON.parse(result[1]));
  alert(result);
  return result;*/
+ var result = getCookie(name);
+ alert(result);
+}
 
- var cookieValue = $.cookie(name);
- alert(cookieValue);
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	alert(document.cookie);
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
 
 setInterval(main, (1000 / 60)); // Refresh 60 times a second

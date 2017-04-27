@@ -656,7 +656,7 @@ var gravar = function (){
     */
     //$.cookie(mapSpriteAtual.id, tempMarker.minutos, tempMarker.horas, { expires : 10 } );
 	
-	setCookie(mapSpriteAtual.id, tempMarker.minutos, 7);
+	setCookie(mapSpriteAtual.id, tempMarker.minutos+"."+tempMarker.horas+"."+tempMarker.XPos+"."+tempMarker.YPos, 7);
     ler();
 }
 
@@ -667,7 +667,6 @@ var ler = function(){
  alert(result);
  return result;*/
  var result = getCookie(name);
- alert(result);
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -675,7 +674,6 @@ function setCookie(cname, cvalue, exdays) {
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-	alert(document.cookie);
 }
 
 function getCookie(cname) {

@@ -656,7 +656,7 @@ var gravar = function (){
     */
     //$.cookie(mapSpriteAtual.id, tempMarker.minutos, tempMarker.horas, { expires : 10 } );
 	
-	setCookie(mapSpriteAtual.id, tempMarker.minutos+"."+tempMarker.horas+"."+tempMarker.XPos+"."+tempMarker.YPos, 7);
+	setCookie(mapSpriteAtual.id, tempMarker.minutos+"."+tempMarker.horas+"."+tempMarker.XPos+"."+tempMarker.YPos+"."+$('#where').val(), 7);
     ler();
 }
 

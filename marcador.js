@@ -531,6 +531,13 @@ mapSprite.tempo= 120;
 Mapas.push(mapSprite);
 
 mapSpriteAtual = Mapas[0];
+
+for (var cont = 0; cont<Mapas.length; cont++){
+var name = mapSpriteAtual.id;
+var result = getCookie(name);
+if (result){
+
+}
 }
 
 var atualizarMap = function(idvalor)

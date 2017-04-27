@@ -1,7 +1,7 @@
 var canvas = document.getElementById('Canvas');
 var context = canvas.getContext("2d");
 var mapSpriteAtual = "";
-var tempMarker;
+
 //criando os mapsprites do jogo
 
 var Mapas = new Array();
@@ -20,6 +20,8 @@ var Marker = function () {
 	this.minutos = "";
 	this.where = "";
 }
+
+var tempMarker = Marker();
 
 var carregar = function ()
 {
@@ -573,7 +575,8 @@ var select = document.getElementById("selectMVP");
     el.textContent = Mapas[i].name;
     el.value = Mapas[i].id;
 	select.appendChild(el);
-	}/**/};
+	}
+};
 
 // marcadores sendo guardados em um vetor
 var Markers = new Array();
@@ -593,13 +596,18 @@ var mouseClicked = function (mouse) {
     marker.XTooltip = mouse.x;
     marker.YTooltip = mouse.y;
     marker.idMarker = mapSpriteAtual.id;
-    marker.horas = 0;
-    marker.minutos = 0;
+	
 	//torna os marcadores já existentes no vetor de marcadores como não-atuais
+	var testeExiste = false;
 	for (var i = 0; i < Markers.length; i++) {
 	if (Markers[i].idMarker == marker.idMarker){
     Markers[i] = marker;
+	testeExiste = true;
     }
+	}
+	
+	if (testeExiste == false){
+	Markers.push(marker);
 	}
 }
 
@@ -635,7 +643,7 @@ var draw = function () {
     // Adicionar o marcador atual
     for (var i = 0; i < Markers.length; i++) {
 		if (Markers[i].idMarker == mapSpriteAtual.id){
-        var tempMarker = Markers[i];
+		tempMarker = Markers[i];
         // Draw marker
         context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos + 10, tempMarker.Width, tempMarker.Height);
 
@@ -663,7 +671,6 @@ var draw = function () {
 };
 
 var gravar = function (){
-
     tempMarker.minutos = $('#minutos').val();
     tempMarker.horas = $('#horas').val();
 	setCookie(mapSpriteAtual.id, tempMarker.horas+"☼"+tempMarker.minutos+"☼"+tempMarker.XPos+"☼"+tempMarker.YPos+"☼"+$('#where').val(), 7);

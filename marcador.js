@@ -668,6 +668,7 @@ var ler = function(){
  return result;*/
  var result = getCookie(name);
  alert(result);
+ alert('test');
 }
 
 function setCookie(cname, cvalue, exdays) {

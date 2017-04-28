@@ -543,6 +543,8 @@ var name = mapSpriteAtual.id;
         tempMarker.minutos = res[1];
         tempMarker.horas = res[0];
         tempMarker.where = res[4];
+        tempMarker.idMarker = mapSpriteAtual.id;
+        
         Markers.push(tempMarker);
         }
 }

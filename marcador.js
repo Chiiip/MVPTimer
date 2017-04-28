@@ -1,6 +1,7 @@
 var canvas = document.getElementById('Canvas');
 var context = canvas.getContext("2d");
 var mapSpriteAtual = "";
+var Markers = new Array();
 
 //criando os mapsprites do jogo
 
@@ -583,10 +584,6 @@ var select = document.getElementById("selectMVP");
 	select.appendChild(el);
 	}
 };
-
-// marcadores sendo guardados em um vetor
-var Markers = new Array();
-
 // ação de clicar no mapa
 var mouseClicked = function (mouse) {
 

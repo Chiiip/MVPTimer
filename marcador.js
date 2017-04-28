@@ -552,12 +552,14 @@ for (var cont = 0; cont<Mapas.length; cont++){
         }
 }
 
+atualizarMap(mapSpriteAtual.id);
 }
 
 var atualizarMap = function(idvalor)
 {
 for (var i = 0; i< Mapas.length; i++){
 	if (Mapas[i].id == idvalor){
+    mapSpriteAtual = new Marker();
 	mapSpriteAtual = Mapas[i];
 	}
 }
@@ -673,8 +675,7 @@ var draw = function () {
         $('#popup').show("slow");
         $('#popup').css('top', tempMarker.YTooltip+10+"px");
         $('#popup').css('left', tempMarker.XTooltip+10+"px");
-        $('#minutos').val(tempMarker.minutos); 
-        $('#horas').val(tempMarker.horas); 
+        
 		}
 	}
 };

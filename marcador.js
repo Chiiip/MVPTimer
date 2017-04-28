@@ -650,6 +650,7 @@ var draw = function () {
     for (var i = 0; i < Markers.length; i++) {
 		if (Markers[i].idMarker == mapSpriteAtual.id){
 		tempMarker = Markers[i];
+        alert('Estou desenhando na posição ' + tempMarker.XPos);
         // Draw marker
         context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos + 10, tempMarker.Width, tempMarker.Height);
 

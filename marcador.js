@@ -533,7 +533,7 @@ Mapas.push(mapSprite);
 mapSpriteAtual = Mapas[0];
 
 for (var cont = 0; cont<Mapas.length; cont++){
-var name = mapSpriteAtual.id;
+        var name = Mapas[i].id;
         var result = getCookie(name);
         if (result){
         var res = result.split("☼");
@@ -544,7 +544,6 @@ var name = mapSpriteAtual.id;
         tempMarker.horas = res[0];
         tempMarker.where = res[4];
         tempMarker.idMarker = mapSpriteAtual.id;
-        alert('Estou adicionando ' + tempMarker.idMarker);
         Markers.push(tempMarker);
         }
 }

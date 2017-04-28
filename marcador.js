@@ -23,8 +23,7 @@ var Marker = function () {
 
 var tempMarker = Marker();
 
-var carregar = function ()
-{
+var carregar = function () {
 
 var mapSprite = new Image();
 mapSprite.id = "MIS01";
@@ -567,9 +566,8 @@ for (var i = 0; i < Markers.length; i++) {
         $('#minutos').val(Markers[i].minutos);
 		$('#where').val(Markers[i].where);
     }
-    }
-
 }
+
 
 //function responsável por carregar os MVPs e seus mapas em uma dropdown list
 var listarMVP = function() {

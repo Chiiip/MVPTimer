@@ -538,6 +538,7 @@ for (var cont = 0; cont<Mapas.length; cont++){
         var result = getCookie(mapSprite.id);
         
         if (result){
+        alert('Estou adicionando ' + mapSprite.id)
         var res = result.split("☼");
         var tempMarker = new Marker();
         tempMarker.XPos = res[2];
@@ -650,7 +651,7 @@ var draw = function () {
     for (var i = 0; i < Markers.length; i++) {
 		if (Markers[i].idMarker == mapSpriteAtual.id){
 		tempMarker = Markers[i];
-        alert('Estou desenhando na posição ' + tempMarker.XPos);
+        //alert('Estou desenhando na posição ' + tempMarker.XPos);
         // Draw marker
         context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos + 10, tempMarker.Width, tempMarker.Height);
 

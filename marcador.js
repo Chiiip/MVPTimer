@@ -24,7 +24,7 @@ var Marker = function () {
     this.YTooltip = "";
 }
 
-var tempMarker = Marker();
+var tempMarker = new Marker();
 
 var carregar = function () {
 
@@ -576,7 +576,6 @@ $('#minutos').val("");
 for (var i = 0; i < Markers.length; i++) {
     if (Markers[i].idMarker == mapSpriteAtual.id){
         $('#horas').val(Markers[i].horas);
-        alert('Estou setando horas com o valor' + Markers[i].horas);
         $('#minutos').val(Markers[i].minutos);
 		$('#where').val(Markers[i].where);
     }

@@ -533,8 +533,10 @@ Mapas.push(mapSprite);
 mapSpriteAtual = Mapas[0];
 
 for (var cont = 0; cont<Mapas.length; cont++){
-        var name = Mapas[i].id;
-        var result = getCookie(name);
+        var mapSprite = new Image();
+        mapSprite = Mapas[cont];
+        var result = getCookie(mapSprite.id);
+        
         if (result){
         var res = result.split("☼");
         var tempMarker = new Marker();

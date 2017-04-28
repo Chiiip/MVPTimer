@@ -651,8 +651,8 @@ var draw = function () {
     // Adicionar o marcador atual
     for (var i = 0; i < Markers.length; i++) {
 		if (Markers[i].idMarker == mapSpriteAtual.id){
+        var tempMarker = new Marker();
 		tempMarker = Markers[i];
-        //alert('Estou desenhando na posição ' + tempMarker.XPos);
         // Draw marker
         context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos + 10, tempMarker.Width, tempMarker.Height);
 
@@ -673,8 +673,8 @@ var draw = function () {
         $('#popup').show("slow");
         $('#popup').css('top', tempMarker.YTooltip+10+"px");
         $('#popup').css('left', tempMarker.XTooltip+10+"px");
-        tempMarker.minutos = $('#minutos').val();
-        tempMarker.horas = $('#horas').val();
+        $('#minutos').val(tempMarker.minutos); 
+        $('#horas').val(tempMarker.horas); 
 		}
 	}
 };

@@ -546,6 +546,8 @@ var name = mapSpriteAtual.id;
         }
 }
 
+}
+
 var atualizarMap = function(idvalor)
 {
 for (var i = 0; i< Mapas.length; i++){
@@ -568,6 +570,7 @@ for (var i = 0; i < Markers.length; i++) {
     }
 }
 
+}
 
 //function responsável por carregar os MVPs e seus mapas em uma dropdown list
 var listarMVP = function() {

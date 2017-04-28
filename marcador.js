@@ -546,7 +546,8 @@ for (var cont = 0; cont<Mapas.length; cont++){
         tempMarker.minutos = res[1];
         tempMarker.horas = res[0];
         tempMarker.where = res[4];
-        tempMarker.idMarker = mapSpriteAtual.id;
+        alert(tempMarker.horas + " " + tempMarker.minutos);
+        tempMarker.idMarker = mapSprite.id;
         Markers.push(tempMarker);
         }
 }

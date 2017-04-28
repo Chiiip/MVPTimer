@@ -544,7 +544,7 @@ var name = mapSpriteAtual.id;
         tempMarker.horas = res[0];
         tempMarker.where = res[4];
         tempMarker.idMarker = mapSpriteAtual.id;
-        
+        alert('Estou adicionando ' + tempMarker.idMarker);
         Markers.push(tempMarker);
         }
 }
@@ -685,8 +685,6 @@ var gravar = function (){
 var ler = function(){
  var name = mapSpriteAtual.id;
  var result = getCookie(name);
- alert(result);
- alert('test');
 }
 
 function setCookie(cname, cvalue, exdays) {

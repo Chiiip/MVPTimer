@@ -20,6 +20,8 @@ var Marker = function () {
 	this.horas = "";
 	this.minutos = "";
 	this.where = "";
+    this.XTooltip = "";
+    this.YTooltip = "";
 }
 
 var tempMarker = Marker();
@@ -538,7 +540,6 @@ for (var cont = 0; cont<Mapas.length; cont++){
         var result = getCookie(mapSprite.id);
         
         if (result){
-        alert('Estou adicionando ' + mapSprite.id)
         var res = result.split("☼");
         var tempMarker = new Marker();
         tempMarker.XPos = res[2];
@@ -546,13 +547,15 @@ for (var cont = 0; cont<Mapas.length; cont++){
         tempMarker.minutos = res[1];
         tempMarker.horas = res[0];
         tempMarker.where = res[4];
-        alert(tempMarker.horas + " " + tempMarker.minutos);
+        tempMarker.XTooltip = res[5];
+        tempMarker.YTooltip = res[6];
         tempMarker.idMarker = mapSprite.id;
         Markers.push(tempMarker);
         }
 }
 
 atualizarMap(mapSpriteAtual.id);
+
 }
 
 var atualizarMap = function(idvalor)
@@ -573,6 +576,7 @@ $('#minutos').val("");
 for (var i = 0; i < Markers.length; i++) {
     if (Markers[i].idMarker == mapSpriteAtual.id){
         $('#horas').val(Markers[i].horas);
+        alert('Estou setando horas com o valor' + Markers[i].horas);
         $('#minutos').val(Markers[i].minutos);
 		$('#where').val(Markers[i].where);
     }
@@ -611,6 +615,9 @@ var mouseClicked = function (mouse) {
 	var testeExiste = false;
 	for (var i = 0; i < Markers.length; i++) {
 	if (Markers[i].idMarker == marker.idMarker){
+    marker.minutos = Markers[i].minutos;
+    marker.horas = Markers[i].horas;
+    marker.where = Markers[i].where;
     Markers[i] = marker;
 	testeExiste = true;
     }
@@ -658,6 +665,7 @@ var draw = function () {
         // Draw marker
         context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos + 10, tempMarker.Width, tempMarker.Height);
 
+        alert(tempMarker.XPos + "" + tempMarker.Sprite.src);
         // Calculate position text
         /*  var markerText = "Coordenadas (" + tempMarker.XPos + ", " + Math.round(tempMarker.YPos) +")";
 
@@ -683,7 +691,7 @@ var draw = function () {
 var gravar = function (){
     tempMarker.minutos = $('#minutos').val();
     tempMarker.horas = $('#horas').val();
-	setCookie(mapSpriteAtual.id, tempMarker.horas+"☼"+tempMarker.minutos+"☼"+tempMarker.XPos+"☼"+tempMarker.YPos+"☼"+$('#where').val(), 7);
+	setCookie(mapSpriteAtual.id, tempMarker.horas+"☼"+tempMarker.minutos+"☼"+tempMarker.XPos+"☼"+tempMarker.YPos+"☼"+$('#where').val()+"☼"+tempMarker.XTooltip+"☼"+tempMarker.YTooltip, 7);
     ler();
 }
 
@@ -715,4 +723,4 @@ function getCookie(cname) {
     return "";
 }
 
-setInterval(main, (1000 / 60)); // Refresh 60 times a second
+setInterval(main, (10000 / 10)); // Refresh 60 times a second

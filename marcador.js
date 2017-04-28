@@ -536,7 +536,7 @@ var name = mapSpriteAtual.id;
         var result = getCookie(name);
         if (result){
         var res = result.split("☼");
-        tempMarker = Marker();
+        var tempMarker = new Marker();
         tempMarker.XPos = res[2];
         tempMarker.YPos = res[3];
         tempMarker.minutos = res[1];

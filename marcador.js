@@ -534,10 +534,17 @@ mapSpriteAtual = Mapas[0];
 
 for (var cont = 0; cont<Mapas.length; cont++){
 var name = mapSpriteAtual.id;
-var result = getCookie(name);
-if (result){
-
-}
+        var result = getCookie(name);
+        if (result){
+        var res = result.split("☼");
+        tempMarker = Marker();
+        tempMarker.XPos = res[2];
+        tempMarker.YPos = res[3];
+        tempMarker.minutos = res[1];
+        tempMarker.horas = res[0];
+        tempMarker.where = res[4];
+        Markers.push(tempMarker);
+        }
 }
 
 var atualizarMap = function(idvalor)
@@ -547,6 +554,7 @@ for (var i = 0; i< Mapas.length; i++){
 	mapSpriteAtual = Mapas[i];
 	}
 }
+
 $('#popup').hide();
 $('#horas').val("");
 $('#minutos').val("");
@@ -555,16 +563,6 @@ $('#minutos').val("");
 
 for (var i = 0; i < Markers.length; i++) {
     if (Markers[i].idMarker == mapSpriteAtual.id){
-		var name = mapSpriteAtual.id;
-		var result = getCookie(name);
-		if (result){
-		var res = result.split("☼");
-		Markers[i].XPos = res[2];
-		Markers[i].YPost = res[3];
-		Markers[i].minutos = res[1];
-		Markers[i].horas = res[0];
-		Markers[i].where = res[4];
-		}
         $('#horas').val(Markers[i].horas);
         $('#minutos').val(Markers[i].minutos);
 		$('#where').val(Markers[i].where);

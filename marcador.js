@@ -618,6 +618,7 @@ var mouseClicked = function (mouse) {
     marker.horas = Markers[i].horas;
     marker.where = Markers[i].where;
     Markers[i] = marker;
+    tempMarker = marker;
 	testeExiste = true;
     }
 	}

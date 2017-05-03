@@ -605,7 +605,7 @@ var mouseClicked = function (mouse) {
     //posiciona o marcador
     var marker = new Marker();
     marker.XPos = mouseXPos - (marker.Width / 2);
-    marker.YPos = mouseYPos - marker.Height;
+    marker.YPos = mouseYPos - marker.Height + 10;
     marker.XTooltip = mouse.x;
     marker.YTooltip = mouse.y;
     marker.idMarker = mapSpriteAtual.id;
@@ -665,7 +665,7 @@ var draw = function () {
         var tempMarker = new Marker();
 		tempMarker = Markers[i];
         // Draw marker
-        context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos + 10, tempMarker.Width, tempMarker.Height);
+        context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos, tempMarker.Width, tempMarker.Height);
 
         //alert(tempMarker.XPos + "" + tempMarker.Sprite.src);
         // Calculate position text

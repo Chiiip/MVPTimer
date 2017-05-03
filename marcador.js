@@ -609,8 +609,7 @@ var mouseClicked = function (mouse) {
     marker.XTooltip = mouse.x;
     marker.YTooltip = mouse.y;
     marker.idMarker = mapSpriteAtual.id;
-	
-	//torna os marcadores já existentes no vetor de marcadores como não-atuais
+    
 	var testeExiste = false;
 	for (var i = 0; i < Markers.length; i++) {
 	if (Markers[i].idMarker == marker.idMarker){

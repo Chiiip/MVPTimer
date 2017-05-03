@@ -10,6 +10,7 @@
 <p id="xpos"></p><br/>
 <p id="ypos"></p><br/>
 <p id="source"></p><br/>
+
 <form id="listaMVP">
   <select id="selectMVP" onchange="atualizarMap(this.value)">
   </select>
@@ -17,7 +18,7 @@
 <br/>
 <canvas id="Canvas" width="500" height="500"></canvas>
 <script src="marcador.js" charset="utf-8"></script>
-
+<input type="Button" value="Desenhar" onclick="draw();"/> 
 </div>
 <div id="popup">
 <div id="content">

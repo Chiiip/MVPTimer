@@ -625,6 +625,7 @@ var mouseClicked = function (mouse) {
 	
 	if (testeExiste == false){
 	Markers.push(marker);
+	alert('Dei um push!');
 	}
 }
 

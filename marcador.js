@@ -681,8 +681,8 @@ var draw = function () {
         context.fillText(markerText, Math.floor(tempMarker.XPos), Math.round(tempMarker.YPos)); */
 		
         $('#popup').show("slow");
-        $('#popup').css('top', "200px");
-        $('#popup').css('left', "200px");
+        $('#popup').css('top', (tempMarker.YTooltip+10)+"px");
+        $('#popup').css('left', (tempMarker.XTooltip+10)+"px");
         $('#xpos').text(tempMarker.XPos);
         $('#ypos').text(tempMarker.YPos);
 		}

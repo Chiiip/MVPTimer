@@ -617,8 +617,8 @@ var mouseClicked = function (mouse) {
     marker.horas = Markers[i].horas;
     marker.where = Markers[i].where;
     alert(Markers[i].XPos + ' ' + Markers[i].YPos + ' ' + Markers[i].idMarker + ' ' + Markers[i].XTooltip + ' ' + Markers[i].YTooltip);
-    //Markers[i] = marker;
-    //tempMarker = marker;
+    Markers[i] = marker;
+    tempMarker = marker;
 	testeExiste = true;
 	alert('Já existia!');
     }

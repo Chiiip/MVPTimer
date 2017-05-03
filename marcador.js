@@ -665,7 +665,7 @@ var draw = function () {
         // Draw marker
         context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos + 10, tempMarker.Width, tempMarker.Height);
 
-        alert(tempMarker.XPos + "" + tempMarker.Sprite.src);
+        //alert(tempMarker.XPos + "" + tempMarker.Sprite.src);
         // Calculate position text
         /*  var markerText = "Coordenadas (" + tempMarker.XPos + ", " + Math.round(tempMarker.YPos) +")";
 
@@ -681,9 +681,10 @@ var draw = function () {
         context.fillText(markerText, Math.floor(tempMarker.XPos), Math.round(tempMarker.YPos)); */
 		
         $('#popup').show("slow");
-        $('#popup').css('top', tempMarker.YTooltip+10+"px");
-        $('#popup').css('left', tempMarker.XTooltip+10+"px");
-        
+        $('#popup').css('top', "200px");
+        $('#popup').css('left', "200px");
+        $('#xpos').text(tempMarker.XPos);
+        $('#ypos').text(tempMarker.YPos);
 		}
 	}
 };
@@ -723,4 +724,4 @@ function getCookie(cname) {
     return "";
 }
 
-setInterval(main, (10000 / 10)); // Refresh 60 times a second
+setInterval(main, (1000 / 60)); // Refresh 60 times a second

@@ -685,6 +685,7 @@ var draw = function () {
         $('#popup').css('left', (tempMarker.XTooltip+10)+"px");
         $('#xpos').text(tempMarker.XPos);
         $('#ypos').text(tempMarker.YPos);
+        $('#source').text(tempMarker.Sprite.src);
 		}
 	}
 };

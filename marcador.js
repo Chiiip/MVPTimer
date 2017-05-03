@@ -24,6 +24,31 @@ var Marker = function () {
     this.YTooltip = "";
 }
 
+var atualizarMap = function(idvalor)
+{
+for (var i = 0; i< Mapas.length; i++){
+	if (Mapas[i].id == idvalor){
+    mapSpriteAtual = new Image();
+	mapSpriteAtual = Mapas[i];
+	}
+}
+
+$('#popup').hide();
+$('#horas').val("");
+$('#minutos').val("");
+
+
+
+for (var i = 0; i < Markers.length; i++) {
+    if (Markers[i].idMarker == mapSpriteAtual.id){
+        $('#horas').val(Markers[i].horas);
+        $('#minutos').val(Markers[i].minutos);
+		$('#where').val(Markers[i].where);
+    }
+}
+
+}
+
 var tempMarker = new Marker();
 
 var carregar = function () {
@@ -558,31 +583,6 @@ atualizarMap(mapSpriteAtual.id);
 
 }
 
-var atualizarMap = function(idvalor)
-{
-for (var i = 0; i< Mapas.length; i++){
-	if (Mapas[i].id == idvalor){
-    mapSpriteAtual = new Image();
-	mapSpriteAtual = Mapas[i];
-	}
-}
-
-$('#popup').hide();
-$('#horas').val("");
-$('#minutos').val("");
-
-
-
-for (var i = 0; i < Markers.length; i++) {
-    if (Markers[i].idMarker == mapSpriteAtual.id){
-        $('#horas').val(Markers[i].horas);
-        $('#minutos').val(Markers[i].minutos);
-		$('#where').val(Markers[i].where);
-    }
-}
-
-}
-
 //function responsável por carregar os MVPs e seus mapas em uma dropdown list
 var listarMVP = function() {
 var select = document.getElementById("selectMVP"); 
@@ -685,9 +685,6 @@ var draw = function () {
         $('#popup').show("slow");
         $('#popup').css('top', tempMarker.YTooltip+10+"px");
         $('#popup').css('left', tempMarker.XTooltip+10+"px");
-        $('#horas').val(tempMarker.horas);
-        $('#minutos').val(tempMarker.minutos);
-		$('#where').val(tempMarker.where);
         $('#xpos').text(tempMarker.XPos);
         $('#ypos').text(tempMarker.YPos);
         $('#source').text(tempMarker.Sprite.src);

@@ -683,8 +683,11 @@ var draw = function () {
         context.fillText(markerText, Math.floor(tempMarker.XPos), Math.round(tempMarker.YPos)); */
 		
         $('#popup').show("slow");
-        $('#popup').css('top', (tempMarker.YTooltip+10)+"px");
-        $('#popup').css('left', (tempMarker.XTooltip+10)+"px");
+        $('#popup').css('top', tempMarker.YTooltip+10+"px");
+        $('#popup').css('left', tempMarker.XTooltip+10+"px");
+        $('#horas').val(tempMarker.horas);
+        $('#minutos').val(tempMarker.minutos);
+		$('#where').val(tempMarker.where);
         $('#xpos').text(tempMarker.XPos);
         $('#ypos').text(tempMarker.YPos);
         $('#source').text(tempMarker.Sprite.src);

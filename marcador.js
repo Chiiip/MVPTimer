@@ -609,15 +609,15 @@ var mouseClicked = function (mouse) {
     marker.XTooltip = mouse.x;
     marker.YTooltip = mouse.y;
     marker.idMarker = mapSpriteAtual.id;
-    
+
 	var testeExiste = false;
 	for (var i = 0; i < Markers.length; i++) {
 	if (Markers[i].idMarker == marker.idMarker){
     marker.minutos = Markers[i].minutos;
     marker.horas = Markers[i].horas;
     marker.where = Markers[i].where;
-    Markers[i] = marker;
-    tempMarker = marker;
+    //Markers[i] = marker;
+    //tempMarker = marker;
 	testeExiste = true;
 	alert('Já existia!');
     }

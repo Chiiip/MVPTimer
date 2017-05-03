@@ -562,7 +562,7 @@ var atualizarMap = function(idvalor)
 {
 for (var i = 0; i< Mapas.length; i++){
 	if (Mapas[i].id == idvalor){
-    mapSpriteAtual = new Marker();
+    mapSpriteAtual = new Image();
 	mapSpriteAtual = Mapas[i];
 	}
 }

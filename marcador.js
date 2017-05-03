@@ -620,6 +620,7 @@ var mouseClicked = function (mouse) {
     Markers[i] = marker;
     tempMarker = marker;
 	testeExiste = true;
+	alert('Já existia!');
     }
 	}
 	

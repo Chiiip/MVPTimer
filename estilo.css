@@ -2,11 +2,10 @@
 	text-align: center;
 }
 
-#popup
-{
+#popup {
     display:none;
     width:200px;
-    height:220px;
+    height:260px;
     background-color:#DEDFDE;
     font-family:Verdana;
     font-size:10pt;
@@ -15,10 +14,35 @@
     position: absolute;
 }
 
-input.tempo{
-	width: 30px;
+#popup input {
+    font-size: 13.3333px;
+    font-family: Arial;
+    font-weight: normal;
 }
 
-input#where{
-	width:70px;
+input.tempo {
+	width: 34px;
+    height: 21px;
+}
+
+input#where {
+	width: 74px;
+    height: 21px;
+}
+
+#divTabela {
+}
+
+.tabela { 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tabela th {
+    text-align: center;
+}
+
+.vaiNascer {
+    color: red;
+    font-weight: bold;
 }

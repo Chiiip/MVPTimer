@@ -1,34 +1,46 @@
 <!DOCTYPE html>
+
 <head>
   <meta charset="UTF-8">
   <title>MVP Timer</title>
-<link rel="stylesheet" href="estilo.css">
-<script src="jquery.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="jquery.min.js" charset="utf-8"></script>
 </head>
-<body>
-<div id="mapa">
-<p id="xpos"></p><br/>
-<p id="ypos"></p><br/>
-<p id="source"></p><br/>
 
-<form id="listaMVP">
-  <select id="selectMVP" onchange="atualizarMap(this.value)">
+<body onload="bodyLoaded()">
+  <div id="mapa">
+    <form id="listaMVP">
+    <h1>MVP Timer</h1>
+      <select id="selectMVP" onchange="atualizarMap(this.value)">
   </select>
-</form>
-<br/>
-<canvas id="Canvas" width="500" height="500"></canvas>
-<script src="marcador.js" charset="utf-8"></script>
-<input type="Button" value="Desenhar" onclick="draw();"/> 
-</div>
-<div id="popup">
-<div id="content">
-<h3>Túmulo</h3>
-<p>Hora da Morte</p>
-<input type="number" id="horas" class="tempo" min="0" max="23"/>  :  <input type="number" id="minutos" class="tempo" min="0" max="59"/><br/>
-<p>Coordenadas (opcional)</p>
-<input type="text" id="where" placeholder="Ex: 150, 86"/> <br/><br/>
-<input type="Button" value="Salvar" onclick="gravar();"/> 
-</div>   
-</div>​
+    </form>
+    <br/>
+    <canvas id="Canvas" width="500" height="500"></canvas>
+    <script src="mapas.js" charset="utf-8"></script>
+    <script src="marcador.js" charset="utf-8"></script>
+  <h1>Meus Marcadores</h1>
+  <div id='divTabela'>
+  </div>
+  <div id='configurações'>
+    <h3>Configurações</h3>
+    <input type="checkbox" id="notification"> Habilitar alertas sonoros<br><br>
+    <input type="checkbox" id="eventosOld"> Não exibir marcadores antigos<br><br>
+    <button onclick="saveConfig()">Salvar Configurações</button>
+  </div>
+  </div>
+  <div id="popup">
+    <div id="content">
+      <h3>Túmulo</h3>
+      <p>Hora da Morte</p>
+      <input type="number" id="horas" class="tempo" min="0" max="23" /> : <input type="number" id="minutos" class="tempo"
+        min="0" max="59" /><br/>
+      <input type="checkbox" id="morreuOntem"> MVP morreu ontem?  <br><br>
+      <p>Coordenadas (opcional)</p>
+      <input type="text" id="where" placeholder="Ex: 150, 86" /> <br/><br/>
+      <input type="Button" value="Salvar" onclick="save()" />
+    </div>
+  </div>​
 </body>
+
 </html>
